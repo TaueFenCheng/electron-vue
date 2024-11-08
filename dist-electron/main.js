@@ -1,1 +1,26 @@
-"use strict";const{app:e,BrowserWindow:i}=require("electron"),t=require("node:path");process.env.ELECTRON_DISABLE_SECURITY_WARNINGS="true";function o(){const n=new i({width:800,height:600,webPreferences:{preload:t.join(__dirname,"preload.js")}});console.log(process.env.VITE_DEV_SERVER_URL,"enenenen"),n.webContents.openDevTools(),n.loadFile("./dist/index.html")}e.whenReady().then(()=>{o(),e.on("activate",function(){i.getAllWindows().length===0&&o()})});e.on("window-all-closed",function(){process.platform!=="darwin"&&e.quit()});
+"use strict";
+const { app, BrowserWindow } = require("electron");
+const path = require("node:path");
+process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
+function createWindow() {
+  const mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js")
+    }
+  });
+  process.env.NODE_ENV;
+  console.log(process.env.NODE_ENV, "enenenen");
+  mainWindow.webContents.openDevTools();
+  mainWindow.loadFile(path.join(__dirname, "./dist/index.html"));
+}
+app.whenReady().then(() => {
+  createWindow();
+  app.on("activate", function() {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+});
+app.on("window-all-closed", function() {
+  if (process.platform !== "darwin") app.quit();
+});

@@ -1,5 +1,6 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
+import About from './components/About.vue'
 </script>
 
 <template>
@@ -11,6 +12,7 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
+  <About />
   <HelloWorld msg="Vite + Vue" />
 </template>
 
@@ -28,8 +30,5 @@ import HelloWorld from './components/HelloWorld.vue'
 
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
-}
-
-filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>

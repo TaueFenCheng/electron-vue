@@ -13,11 +13,17 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.js')
     }
   })
-  console.log(process.env.VITE_DEV_SERVER_URL, 'enenenen')
-
+  const mode = process.env.NODE_ENV
+  console.log(process.env.NODE_ENV, 'enenenen')
   mainWindow.webContents.openDevTools()
+  mainWindow.loadFile(path.join(__dirname, './dist/index.html'))
+  // if (mode === 'development') {
+  //   mainWindow.loadFile(path.join(__dirname, './index.html'))
+  // } else {
+  //   mainWindow.loadFile(path.join(__dirname, './dist/index.html'))
+  // }
+
   // and load the index.html of the app.
-  mainWindow.loadFile('./dist/index.html')
   // mainWindow.loadFile('index.html')
 
   // Open the DevTools. 
