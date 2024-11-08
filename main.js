@@ -2,7 +2,9 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('node:path')
 
-function createWindow () {
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
+
+function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
@@ -11,12 +13,26 @@ function createWindow () {
       preload: path.join(__dirname, 'preload.js')
     }
   })
+  console.log(process.env.VITE_DEV_SERVER_URL, 'enenenen')
 
+  mainWindow.webContents.openDevTools()
   // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+  mainWindow.loadFile('./dist/index.html')
+  // mainWindow.loadFile('index.html')
 
-  // Open the DevTools.
+  // Open the DevTools. 
   // mainWindow.webContents.openDevTools()
+  // win.loadURL('http://localhost:3000')
+  // development模式
+  // if (process.env.VITE_DEV_SERVER_URL) {
+  //   mainWindow.loadURL(process.env.VITE_DEV_SERVER_URL)
+  //   // 开启调试台
+  //   mainWindow.webContents.openDevTools()
+  //   console.log(3333333333333333)
+  // } else {
+  //   mainWindow.loadFile(path.join(__dirname, './dist/index.html'))
+  // }
+
 }
 
 // This method will be called when Electron has finished
