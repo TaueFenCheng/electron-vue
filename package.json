@@ -5,13 +5,14 @@
   "main": "./main.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "rimraf dist && vite build",
     "preview": "vite preview",
-    "start:build": "pnpm build && electron . --no-sandbox",
-    "start:dev": "pnpm dev && electron . --no-sandbox",
+    "start:build": "rimraf dist && pnpm build && electron . --no-sandbox",
+    "start:dev": "rimraf dist && pnpm dev && electron . --no-sandbox",
     "serve": "serve dist -p 3333"
   },
   "dependencies": {
+    "rimraf": "^6.0.1",
     "serve": "^14.2.4",
     "vue": "^3.5.12"
   },
