@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "start:build": "rimraf dist && pnpm build && electron . --no-sandbox",
     "start:dev": "rimraf dist && pnpm dev && electron . --no-sandbox",
-    "serve": "serve dist -p 3333"
+    "serve": "serve dist -p 3333",
+    "check": "biome check ./src",
+    "lint": "biome check ./src --fix"
   },
   "dependencies": {
     "rimraf": "^6.0.1",
@@ -17,6 +19,7 @@
     "vue": "^3.5.12"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@vitejs/plugin-vue": "^5.1.4",
     "electron": "^33.1.0",
     "electron-devtools-installer": "^3.2.0",
